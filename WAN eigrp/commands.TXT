@@ -1,0 +1,76 @@
+HQ
+hostname HQ
+enable secret cisco
+
+interface GigabitEthernet0/0
+ ip address 192.168.0.1 255.255.255.128
+ no shutdown
+
+interface GigabitEthernet0/1
+ ip address 192.168.0.129 255.255.255.192
+ no shutdown
+
+interface Serial0/1/0
+ ip address 192.168.2.1 255.255.255.252
+ clock rate 64000
+ no shutdown
+
+interface Serial0/1/1
+ ip address 192.168.2.5 255.255.255.252
+ clock rate 64000
+ no shutdown
+
+router eigrp 100
+ network 192.168.0.0 0.0.0.127        
+ network 192.168.0.128 0.0.0.63      
+ network 192.168.2.0 0.0.0.3       
+ network 192.168.2.4 0.0.0.3          
+ no auto-summary
+ passive-interface GigabitEthernet0/0
+ passive-interface GigabitEthernet0/1
+
+do show ip eigrp neighbors
+do show ip route eigrp
+
+POBOCKA A
+hostname R1
+enable secret cisco
+
+interface GigabitEthernet0/0
+ ip address 192.168.1.1 255.255.255.192
+ no shutdown
+
+interface Serial0/1/0
+ ip address 192.168.2.2 255.255.255.252
+ no shutdown
+
+router eigrp 100
+ network 192.168.1.0 0.0.0.63         
+ network 192.168.2.0 0.0.0.3       
+ no auto-summary
+ passive-interface GigabitEthernet0/0
+
+do show ip eigrp neighbors
+do show ip route eigrp
+
+POBOCKA B
+hostname R2
+enable secret cisco
+
+! Konfigurácia rozhraní
+interface GigabitEthernet0/0
+ ip address 192.168.1.65 255.255.255.224
+ no shutdown
+
+interface Serial0/0/1
+ ip address 192.168.2.6 255.255.255.252
+ no shutdown
+
+router eigrp 100
+ network 192.168.1.64 0.0.0.31 
+ network 192.168.2.4 0.0.0.3       
+ no auto-summary
+ passive-interface GigabitEthernet0/0   
+
+do show ip eigrp neighbors
+do show ip route eigrp
