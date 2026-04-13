@@ -36,3 +36,7 @@ remember to add HWIC-2T modules to routers
 | PC_HQ2     | NIC       | 192.168.0.130 | /26 | 192.168.0.129 |
 | PC_R1      | NIC       | 192.168.1.2 | /26 | 192.168.1.1 |
 | PC_R2      | NIC       | 192.168.1.66 | /27 | 192.168.1.65 |
+
+# LAN
+configuration of  VTP, VLAN, STP, DHCP, NAT
+its 5 configuration so some on them may not work (try them out and not working please send to issue)
