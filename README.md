@@ -40,3 +40,6 @@ remember to add HWIC-2T modules to routers
 # LAN
 configuration of  VTP, VLAN, STP, DHCP, NAT
 its 5 configuration so some on them may not work (try them out and not working please send to issue)
+
+# OSPF WAN
+basic configuration of ospf protocol
