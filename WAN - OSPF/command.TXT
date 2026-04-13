@@ -1,0 +1,54 @@
+S0
+interface s0/1/0
+ip address 10.0.0.1 255.255.255.252
+no shutdown
+
+interface s0/1/1
+ip address 10.0.0.5 255.255.255.252
+no shutdown
+
+interface g0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+
+
+router ospf 1
+network 10.0.0.0 0.0.0.3 area 0
+network 10.0.0.4 0.0.0.3 area 0
+network 192.168.1.0 0.0.0.255 area 0
+
+S1
+interface s0/1/0
+ip address 10.0.0.2 255.255.255.252
+no shutdown
+
+interface g0/0
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+
+interface s0/1/1
+ip address 10.0.0.9 255.255.255.252
+no shutdown
+
+router ospf 1
+network 10.0.0.0 0.0.0.3 area 0
+network 10.0.0.8 0.0.0.3 area 0
+network 192.168.2.0 0.0.0.255 area 0
+
+S2
+interface g0/0
+ip address 192.168.3.1 255.255.255.0
+no shutdown
+
+interface s0/1/1
+ip address 10.0.0.6 255.255.255.252
+no shutdown
+
+interface s0/1/0
+ip address 10.0.0.10 255.255.255.252
+no shutdown
+
+router ospf 1
+network 10.0.0.4 0.0.0.3 area 0
+network 10.0.0.8 0.0.0.3 area 0
+network 192.168.3.0 0.0.0.255 area 0
